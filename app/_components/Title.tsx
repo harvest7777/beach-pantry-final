@@ -2,7 +2,7 @@
 import { PropsWithChildren } from "react";
 import { useRouter } from "next/navigation";
 
-import { IoArrowBack, IoArrowBackSharp } from "react-icons/io5";
+import { IoArrowBackSharp } from "react-icons/io5";
 
 const Title: React.FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();

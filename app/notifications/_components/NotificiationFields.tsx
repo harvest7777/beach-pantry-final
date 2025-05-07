@@ -6,9 +6,9 @@ export default function NotificationFields() {
   const [phoneError, setPhoneError] = useState("");
   const [phoneSuccess, setPhoneSuccess] = useState("");
 
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [emailSuccess, setEmailSuccess] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [emailError, setEmailError] = useState("");
+  // const [emailSuccess, setEmailSuccess] = useState("");
 
   const handleOptInPhone = () => {
     const isValidPhone: boolean = /^\d{3}-\d{3}-\d{4}$/.test(phone);
@@ -23,19 +23,19 @@ export default function NotificationFields() {
     setTimeout(() => setPhoneSuccess(""), 3000); // clear message after 3 seconds
   };
 
-  const handleOptInEmail = () => {
-    const isValidEmail =
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
-    if (!isValidEmail) {
-      setEmailError("Invalid format. Must be emailname@domain.tld");
-      setEmailSuccess("");
-      setTimeout(() => setEmailError(""), 3000); // clear message after 3 seconds
-      return;
-    } else setEmailError("");
-    setEmailSuccess("Successfully opted in!");
-    setEmailError("");
-    setTimeout(() => setEmailSuccess(""), 3000); // clear message after 3 seconds
-  };
+  // const handleOptInEmail = () => {
+  //   const isValidEmail =
+  //     /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+  //   if (!isValidEmail) {
+  //     setEmailError("Invalid format. Must be emailname@domain.tld");
+  //     setEmailSuccess("");
+  //     setTimeout(() => setEmailError(""), 3000); // clear message after 3 seconds
+  //     return;
+  //   } else setEmailError("");
+  //   setEmailSuccess("Successfully opted in!");
+  //   setEmailError("");
+  //   setTimeout(() => setEmailSuccess(""), 3000); // clear message after 3 seconds
+  // };
   return (
     <div className="w-full flex flex-col items-center gap-y-3">
       <p className="italic">You may opt in to receive restock notifications</p>
