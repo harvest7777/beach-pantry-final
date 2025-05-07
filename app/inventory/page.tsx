@@ -17,6 +17,7 @@ export default function InventoryPage() {
     isDairyFree: false,
     isHighProtein: false,
     isGlutenFree: false,
+    isFreshProduce: false,
   });
 
   const handleSearch = () => {
@@ -33,6 +34,7 @@ export default function InventoryPage() {
         (!filters.isVegan || product.isVegan) &&
         (!filters.isDairyFree || product.isDairyFree) &&
         (!filters.isHighProtein || product.isHighProtein) &&
+        (!filters.isFreshProduce || product.isFreshProduce) &&
         (!filters.isGlutenFree || product.isGlutenFree);
 
       return matchesSearch && matchesFilters;
@@ -63,45 +65,49 @@ export default function InventoryPage() {
   return (
     <div className="flex flex-col items-center">
       <Title>Inventory</Title>
-      <section>
-        <div className="flex gap-x-2 mt-5">
-          <input
-            type="text"
-            ref={inputRef}
-            placeholder="ex: watermelon   ⌘ K"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSearch();
-              }
-            }}
-            className="w-full"
-          />
+      <section className="w-full px-5">
+        <div className="w-full">
+          <div className="flex gap-x-2 mt-5">
+            <input
+              type="text"
+              ref={inputRef}
+              placeholder="ex: watermelon   ⌘ K"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSearch();
+                }
+              }}
+              className="w-full"
+            />
 
-          <button onClick={handleSearch}>Search</button>
-          <FilterButton filters={filters} setFilters={setFilters} />
+            <button onClick={handleSearch}>Search</button>
+            <FilterButton filters={filters} setFilters={setFilters} />
+          </div>
+          {/* filter display */}
+          <ul className="italic text-gray-400 w-full flex gap-x-2 mb-5">
+            <p>* Applied filters: </p>
+            {Object.values(filters).filter(Boolean).length === 0 && (
+              <li>None</li>
+            )}
+            {Object.entries(filters).map(
+              ([key, enabled]) =>
+                enabled && (
+                  <li key={key}>{prettyFilters[key as keyof TFilter]}</li>
+                )
+            )}
+          </ul>
         </div>
-
-        {/* filter display */}
-        <ul className="italic text-gray-400 w-full flex gap-x-2 mb-5">
-          <p>* Applied filters: </p>
-          {Object.values(filters).filter(Boolean).length === 0 && <li>None</li>}
-          {Object.entries(filters).map(
-            ([key, enabled]) =>
-              enabled && (
-                <li key={key}>{prettyFilters[key as keyof TFilter]}</li>
-              )
-          )}
-        </ul>
-
         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2  gap-8">
           {searchTerm && filteredProducts.length === 0 && (
-            <p>No results found.</p>
+            <p className="col-span-full text-center">No results found.</p>
           )}
 
           {filteredProducts.map((product) => (
-            <ProductDisplay key={product.id} product={product} />
+            <div className="flex justify-center" key={product.id}>
+              <ProductDisplay product={product} />
+            </div>
           ))}
         </div>
       </section>

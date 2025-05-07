@@ -3,6 +3,7 @@ export interface TFilter {
   isDairyFree: boolean;
   isHighProtein: boolean;
   isGlutenFree: boolean;
+  isFreshProduce: boolean;
 }
 
 export const prettyFilters: { [key in keyof TFilter]: string } = {
@@ -10,4 +11,5 @@ export const prettyFilters: { [key in keyof TFilter]: string } = {
   isDairyFree: "Dairy Free",
   isHighProtein: "High Protein",
   isGlutenFree: "Gluten Free",
+  isFreshProduce: "Fresh Produce",
 };

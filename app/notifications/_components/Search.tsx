@@ -53,8 +53,24 @@ export default function Search() {
   );
   return (
     <div className="w-full">
+      <p className="italic">Add products to notification list</p>
+      <div className="flex gap-x-5 itens-center align-middle">
+        <select
+          className="bg-gray-200 rounded-xl px-2 h-8"
+          value={selectedId}
+          onChange={handleSelect}
+        >
+          <option value="">-- Choose a product --</option>
+          {products.map((product) => (
+            <option key={product.id} value={product.id}>
+              {product.name}
+            </option>
+          ))}
+        </select>
+        <button onClick={() => handleSave()}>Add</button>
+      </div>
       {/* users selected products */}
-      <section>
+      <section className="mt-5">
         <h2 className="italic">You will be notified when we restock...</h2>
         <ul className="flex flex-wrap gap-y-2 gap-x-2 outline-1 outline-muted p-2 rounded-xl">
           {selectedProducts.length === 0 && (
@@ -76,23 +92,6 @@ export default function Search() {
           ))}
         </ul>
       </section>
-
-      <p className="mt-5 italic">Add products to notification list</p>
-      <div className="flex gap-x-5 itens-center align-middle">
-        <select
-          className="bg-gray-200 rounded-xl px-2"
-          value={selectedId}
-          onChange={handleSelect}
-        >
-          <option value="">-- Choose a product --</option>
-          {products.map((product) => (
-            <option key={product.id} value={product.id}>
-              {product.name}
-            </option>
-          ))}
-        </select>
-        <button onClick={() => handleSave()}>Add</button>
-      </div>
     </div>
   );
 }

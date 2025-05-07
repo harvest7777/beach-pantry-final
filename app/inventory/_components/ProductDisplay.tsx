@@ -15,7 +15,7 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ product }) => {
   };
 
   return (
-    <div className="sm:w-60 w-40 overflow-hidden rounded-xl outline-1 outline-muted p-2 shadow-sm">
+    <div className="w-full overflow-hidden rounded-xl outline-1 outline-muted p-2 shadow-sm">
       <ProductInfoModal
         product={product}
         visible={visible}

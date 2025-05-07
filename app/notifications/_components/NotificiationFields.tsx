@@ -63,7 +63,7 @@ export default function NotificationFields() {
           <p className="text-emerald-500 text-sm">{phoneSuccess}</p>
         )}
       </div>
-      <div>
+      {/* <div>
         <label>Email Notifications</label>
         <div className="flex gap-x-2">
           <input
@@ -85,7 +85,7 @@ export default function NotificationFields() {
         {emailSuccess && (
           <p className="text-emerald-500 text-sm">{emailSuccess}</p>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
