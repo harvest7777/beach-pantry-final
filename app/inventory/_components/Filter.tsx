@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { prettyFilters } from "../_data/filters";
-import { TFilter } from "../_data/filters"
+import { TFilter } from "../_data/filters";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface FilterProps {
@@ -16,17 +16,17 @@ const FilterButton: React.FC<FilterProps> = ({ filters, setFilters }) => {
       <button onClick={() => setVisible(!visible)}>Filters</button>
       {/* modal */}
       <AnimatePresence>
-        {visible &&
+        {visible && (
           <div className="absolute top-0 left-0 w-full h-screen flex items-center align-middle justify-center z-50">
-
-            <div className="absolute top-0 left-0 w-full h-full bg-muted opacity-50"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40"></div>
             {/* modal contents */}
             <motion.div
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -100, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="z-50 w-80 h-60 bg-white rounded-xl p-4 flex flex-col items-center">
+              className="z-50 w-80 h-60 bg-zinc-50 outline-1 outline-muted shadow-sm rounded-xl p-4 flex flex-col items-center"
+            >
               <h1>Apply filters</h1>
               <div className="mt-5 flex-col gap-x-10 justify-center flex-1">
                 {Object.entries(filters).map(([key, value]) => (
@@ -42,16 +42,20 @@ const FilterButton: React.FC<FilterProps> = ({ filters, setFilters }) => {
                         }))
                       }
                     />
-                    <span className="capitalize">{prettyFilters[key as keyof TFilter]}</span>
+                    <span className="capitalize">
+                      {prettyFilters[key as keyof TFilter]}
+                    </span>
                   </label>
                 ))}
               </div>
-              <button onClick={() => setVisible(!visible)}>Back To Search</button>
+              <button onClick={() => setVisible(!visible)}>
+                Back To Search
+              </button>
             </motion.div>
           </div>
-        }
+        )}
       </AnimatePresence>
     </div>
-  )
-}
+  );
+};
 export default FilterButton;

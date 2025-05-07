@@ -6,8 +6,8 @@
 }
 
 @theme {
-  --color-primary: #FFC629;
-  --color-muted: #363229;
+  --color-primary: #b7c29a;
+  --color-muted: #e4e4e7;
 }
 
 @theme inline {
@@ -31,7 +31,7 @@ body {
 }
 
 button {
-  @apply px-2 py-1 rounded-xl hover:cursor-pointer outline-1 outline-[#363229];
+  @apply px-2 py-1 rounded-xl hover:cursor-pointer outline-1 outline-muted hover:bg-zinc-50 transition-all duration-100 active:scale-95;
 }
 
 h1 {
@@ -39,9 +39,13 @@ h1 {
 }
 
 input {
-  @apply rounded-xl px-2 outline-1 outline-muted;
+  @apply rounded-xl px-2 outline-1 outline-muted bg-zinc-50;
 }
 
 .errorMessage {
   @apply text-red-500 text-sm;
+}
+
+.card {
+  @apply shadow-sm outline-1 outline-muted;
 }

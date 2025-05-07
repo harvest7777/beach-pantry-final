@@ -9,7 +9,11 @@ interface ProductInfoModalProps {
   setVisible: React.Dispatch<SetStateAction<boolean>>;
 }
 
-const ProductInfoModal: React.FC<ProductInfoModalProps> = ({ product, visible, setVisible }) => {
+const ProductInfoModal: React.FC<ProductInfoModalProps> = ({
+  product,
+  visible,
+  setVisible,
+}) => {
   const nutritionInfo = [
     { label: "Calories", value: product.calories },
     { label: "Sugar", value: `${product.sugarGrams}g` },
@@ -27,7 +31,7 @@ const ProductInfoModal: React.FC<ProductInfoModalProps> = ({ product, visible, s
       {visible && (
         <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center z-50">
           <div
-            className="absolute top-0 left-0 w-full h-full bg-muted opacity-50"
+            className="absolute top-0 left-0 w-full h-full bg-black opacity-40"
             onClick={() => setVisible(false)}
           />
 
@@ -36,9 +40,11 @@ const ProductInfoModal: React.FC<ProductInfoModalProps> = ({ product, visible, s
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="z-50 rounded-xl p-4 w-92 bg-white flex flex-col items-center"
+            className="z-50 rounded-xl p-4 w-92 bg-white flex flex-col items-center outline-1 outline-muted shadow-sm"
           >
-            <h2 className="text-xl font-bold mb-4 text-center">{product.name}</h2>
+            <h2 className="text-xl font-bold mb-4 text-center">
+              {product.name}
+            </h2>
             <ul className="w-full space-y-2 divide-y-1 divide-muted outline-muted outline-2 pt-1 px-2 rounded-xl">
               {nutritionInfo.map((info) => (
                 <li key={info.label}>
@@ -46,7 +52,10 @@ const ProductInfoModal: React.FC<ProductInfoModalProps> = ({ product, visible, s
                 </li>
               ))}
             </ul>
-            <button className="mt-5 bg-red-400" onClick={() => setVisible(false)}>
+            <button
+              className="mt-5 bg-red-400 hover:!bg-red-600"
+              onClick={() => setVisible(false)}
+            >
               Close
             </button>
           </motion.div>
@@ -57,4 +66,3 @@ const ProductInfoModal: React.FC<ProductInfoModalProps> = ({ product, visible, s
 };
 
 export default ProductInfoModal;
-

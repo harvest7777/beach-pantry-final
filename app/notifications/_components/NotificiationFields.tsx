@@ -21,12 +21,11 @@ export default function NotificationFields() {
     setPhoneSuccess("Successfully opted in!");
     setPhoneError("");
     setTimeout(() => setPhoneSuccess(""), 3000); // clear message after 3 seconds
-
-  }
-
+  };
 
   const handleOptInEmail = () => {
-    const isValidEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+    const isValidEmail =
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
     if (!isValidEmail) {
       setEmailError("Invalid format. Must be emailname@domain.tld");
       setEmailSuccess("");
@@ -36,8 +35,7 @@ export default function NotificationFields() {
     setEmailSuccess("Successfully opted in!");
     setEmailError("");
     setTimeout(() => setEmailSuccess(""), 3000); // clear message after 3 seconds
-
-  }
+  };
   return (
     <div className="w-full flex flex-col items-center gap-y-3">
       <p className="italic">You may opt in to receive restock notifications</p>
@@ -50,17 +48,20 @@ export default function NotificationFields() {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="123-456-7890"
-
             onKeyDown={(e) => {
-              if (e.key === 'Enter') {
+              if (e.key === "Enter") {
                 handleOptInPhone();
               }
             }}
           />
-          <button className="flex-1" onClick={() => handleOptInPhone()}>Opt In</button>
+          <button className="flex-1" onClick={() => handleOptInPhone()}>
+            Opt In
+          </button>
         </div>
         {phoneError && <p className="errorMessage">{phoneError}</p>}
-        {phoneSuccess && <p className="text-emerald-500 text-sm">{phoneSuccess}</p>}
+        {phoneSuccess && (
+          <p className="text-emerald-500 text-sm">{phoneSuccess}</p>
+        )}
       </div>
       <div>
         <label>Email Notifications</label>
@@ -70,19 +71,21 @@ export default function NotificationFields() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="someone@gmail.com"
-
             onKeyDown={(e) => {
-              if (e.key === 'Enter') {
+              if (e.key === "Enter") {
                 handleOptInEmail();
               }
             }}
           />
-          <button className="flex-1" onClick={() => handleOptInEmail()}>Opt In</button>
+          <button className="flex-1" onClick={() => handleOptInEmail()}>
+            Opt In
+          </button>
         </div>
         {emailError && <p className="errorMessage">{emailError}</p>}
-        {emailSuccess && <p className="text-emerald-500 text-sm">{emailSuccess}</p>}
+        {emailSuccess && (
+          <p className="text-emerald-500 text-sm">{emailSuccess}</p>
+        )}
       </div>
     </div>
   );
 }
-
