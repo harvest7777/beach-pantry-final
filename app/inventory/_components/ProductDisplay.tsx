@@ -37,7 +37,7 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({ product }) => {
       </h2>
       <span
         onClick={() => setVisible(true)}
-        className="hover:cursor-pointer flex gap-x-2 items-center "
+        className="hover:cursor-pointer flex gap-x-2 items-center underline"
       >
         <BsInfoCircle />
         More info
