@@ -100,7 +100,7 @@ export default function InventoryPage() {
           </ul>
         </div>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2  gap-8">
-          {searchTerm && filteredProducts.length === 0 && (
+          {filteredProducts.length === 0 && (
             <p className="col-span-full text-center">No results found.</p>
           )}
 
