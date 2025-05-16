@@ -101,7 +101,10 @@ export default function InventoryPage() {
         </div>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2  gap-8">
           {filteredProducts.length === 0 && (
-            <p className="col-span-full text-center">No results found.</p>
+            <p className="col-span-full text-center">
+              No results found. Try searching something else or removing some
+              filters!
+            </p>
           )}
 
           {filteredProducts.map((product) => (
